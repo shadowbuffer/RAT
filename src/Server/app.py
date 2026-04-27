@@ -21,6 +21,12 @@ def register():
     print(agent_id)
     return agent_id
 
+@app.route('/upload/<file>', methods=['POST'])
+def upload():
+    data = request.content()
+    print(data)
+    return "thanks", 201, {'Content-Type': 'text/plain'}
+
 @app.route('/ping', methods=['POST'])
 def ping():
     return "ok", 201, {'Content-Type': 'text/plain'}

