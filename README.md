@@ -2,7 +2,7 @@
 :rat: 
 **Description:** RAT-8000 is a Remote Access Trojan. Features include: keys logging, capture screenshot(s), send email(s), and remote control. See To-do List for upgrades (WIP). 
 
-I know, I know. Not too many people frown upon a Python being used for malware development, but that's not the point. The point of creating such a project is to learn and build a solid foundation of how  a Remote Access Trojan (RAT) can be engineered from scratch. No, I will not upload any low-level C and assembly language hybrid RATs in the in the future. 
+I know, I know. All the experts on the internet frown upon a Python being used for malware development. I get it. However, building a RAT in Python isn't something you participate in for the sake of claiming the badge of uber-duper super hacker man. Anyone that believes otherwise is not seeing the bigger picture. The point of creating such a project is to learn and build a solid foundation of how  a Remote Access Trojan (RAT) can be engineered from scratch. No, I will not upload any low-level C and assembly language hybrid RATs in the in the future. 
 
 ### 1. To-do List
 <ol>
